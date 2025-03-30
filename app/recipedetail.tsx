@@ -11,6 +11,9 @@ import { th } from 'date-fns/locale'
 import { toZonedTime } from 'date-fns-tz'
 import { Text } from "@/components/CustomText"
 import { useTheme } from '@/providers/ThemeProvider'
+import { FontAwesome } from '@expo/vector-icons'
+import { useAuth } from '@/providers/AuthProvider'
+import CustomAlert from '@/components/CustomAlert'
 
 interface SellerProfile {
   id: string
@@ -63,6 +66,46 @@ export default function RecipeDetail() {
   const [category, setCategory] = useState<Category | null>(null)
   const [Difficulty, setDifficulty] = useState<Difficulty | null>(null)
   const { theme } = useTheme()
+  const { session } = useAuth()
+  const [userRating, setUserRating] = useState(0)
+  const [averageRating, setAverageRating] = useState(0)
+  const [ratingCount, setRatingCount] = useState(0)
+  const [hasRated, setHasRated] = useState(false)
+  const [alertConfig, setAlertConfig] = useState<{
+    visible: boolean;
+    title: string;
+    message: string;
+    buttons: Array<{
+      text: string;
+      onPress: () => void;
+      style?: 'default' | 'cancel' | 'destructive';
+    }>;
+  }>({
+    visible: false,
+    title: '',
+    message: '',
+    buttons: []
+  });
+
+  const StarRating = ({ rating, maxRating = 5, size = 24, onRatingChange }) => {
+    return (
+      <View className="flex-row">
+        {[...Array(maxRating)].map((_, index) => (
+          <TouchableOpacity
+            key={index}
+            onPress={() => onRatingChange && onRatingChange(index + 1)}
+            className="p-1"
+          >
+            <FontAwesome
+              name={index < rating ? "star" : "star-o"}
+              size={size}
+              color={index < rating ? "#FFD700" : "#CCCCCC"}
+            />
+          </TouchableOpacity>
+        ))}
+      </View>
+    )
+  }
 
   const fetchRecipeDetail = async () => {
     try {
@@ -144,6 +187,12 @@ export default function RecipeDetail() {
     }
   }, [RecipeDetail])
 
+  useEffect(() => {
+    if (RecipeDetail) {
+      fetchRatings();
+    }
+  }, [RecipeDetail, session]);
+
   const handleContact = () => {
     if (sellerProfile?.phone) {
       Linking.openURL(`tel:${sellerProfile.phone}`)
@@ -195,6 +244,118 @@ export default function RecipeDetail() {
       return dateString
     }
   }
+
+  const fetchRatings = async () => {
+    try {
+      // ดึงคะแนนเฉลี่ย - แก้ไขตรงนี้
+      const { data: ratingsData, error: ratingsError } = await supabase
+        .from('ratings')
+        .select('rating')
+        .eq('recipe_id', params.id);
+        
+      if (ratingsError) throw ratingsError;
+      
+      // คำนวณคะแนนเฉลี่ยเอง
+      let avg = 0;
+      if (ratingsData && ratingsData.length > 0) {
+        const sum = ratingsData.reduce((total, item) => total + item.rating, 0);
+        avg = sum / ratingsData.length;
+      }
+      
+      // ดึงจำนวนคะแนนทั้งหมด
+      const { count, error: countError } = await supabase
+        .from('ratings')
+        .select('id', { count: 'exact' })
+        .eq('recipe_id', params.id);
+      
+      if (countError) throw countError;
+      
+      // ถ้ามีผู้ใช้ปัจจุบัน ให้ดึงคะแนนที่ผู้ใช้เคยให้ไว้
+      if (session?.user) {
+        const { data: userRatingData, error: userRatingError } = await supabase
+          .from('ratings')
+          .select('rating')
+          .eq('recipe_id', params.id)
+          .eq('user_id', session.user.id)
+          .single();
+        
+        if (!userRatingError && userRatingData) {
+          setUserRating(userRatingData.rating);
+          setHasRated(true);
+        }
+      }
+      
+      setAverageRating(avg);
+      setRatingCount(count || 0);
+    } catch (error) {
+      console.error('Error fetching ratings:', error);
+    }
+  };
+  
+  const handleRating = async (rating) => {
+    try {
+      if (!session?.user) {
+        // แสดง alert ให้ล็อกอินก่อน
+        setAlertConfig({
+          visible: true,
+          title: t('common.error'),
+          message: t('rating.loginRequired'),
+          buttons: [
+            {
+              text: t('common.ok'),
+              onPress: () => setAlertConfig(prev => ({ ...prev, visible: false }))
+            }
+          ]
+        });
+        return;
+      }
+      
+      // ระบุ primary key เพิ่มเติมเพื่อให้ upsert ทำงานได้ถูกต้อง
+      const { error } = await supabase
+        .from('ratings')
+        .upsert({
+          recipe_id: params.id,
+          user_id: session.user.id,
+          rating
+        }, { 
+          onConflict: 'user_id,recipe_id' // ระบุเงื่อนไขความขัดแย้ง
+        });
+        
+      if (error) throw error;
+      
+      setUserRating(rating);
+      setHasRated(true);
+      
+      // รีเฟรชข้อมูลคะแนนเฉลี่ย
+      fetchRatings();
+      
+      // แสดง alert บันทึกคะแนนสำเร็จ
+      setAlertConfig({
+        visible: true,
+        title: t('rating.success.title'),
+        message: t('rating.success.message'),
+        buttons: [
+          {
+            text: t('common.ok'),
+            onPress: () => setAlertConfig(prev => ({ ...prev, visible: false }))
+          }
+        ]
+      });
+    } catch (error) {
+      console.error('Error saving rating:', error);
+      setAlertConfig({
+        visible: true,
+        title: t('common.error'),
+        message: t('rating.error'),
+        buttons: [
+          {
+            text: t('common.ok'),
+            onPress: () => setAlertConfig(prev => ({ ...prev, visible: false }))
+          }
+        ]
+      });
+    }
+  };
 
   return (
     <SafeAreaView 
@@ -337,6 +498,24 @@ export default function RecipeDetail() {
             </View>
           </View>
 
+          {/* Rating Section */}
+          <View className={`p-4 rounded-lg shadow-md mt-4 ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} border ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'}`}>
+            <View className="items-center">
+              <Text weight="medium" className="text-lg mb-2 text-center">{t('recipe.rating')}</Text>
+              
+              {/* Average Rating */}
+              <View className="flex-row items-center mb-4">
+                <Text className="mr-2">{t('recipe.averageRating')}:</Text>
+                <StarRating rating={Math.round(averageRating)} onRatingChange={null} />
+                <Text className="ml-2">({averageRating.toFixed(1)}) - {ratingCount} {t('recipe.votes')}</Text>
+              </View>
+              
+              {/* User Rating */}
+              <Text className="mb-2">{hasRated ? t('recipe.yourRating') : t('recipe.rateThis')}</Text>
+              <StarRating rating={userRating} onRatingChange={handleRating} />
+            </View>
+          </View>
+
           {/* Seller Info */}
           <View className="mt-6 mb-8">
             <Text weight="medium" className="text-lg font-medium mb-2">ข้อมูลผู้แชร์สูตร</Text>
@@ -378,6 +557,15 @@ export default function RecipeDetail() {
           </View>
         </View>
       </ScrollView>
+
+      <CustomAlert
+  visible={alertConfig.visible}
+  title={alertConfig.title}
+  message={alertConfig.message}
+  buttons={alertConfig.buttons}
+  onClose={() => setAlertConfig(prev => ({ ...prev, visible: false }))}
+/>
+
     </SafeAreaView>
   )
 }

@@ -51,24 +51,38 @@
     }
   },
   "recipe": {
-    "title": "Recipe Name",
-    "cooking_time": "Cooking Time",
-    "description": "Description",
-    "category": "Category",
-    "condition": "condition",
-    "createdAt": "Created At",
-    "origin": "Origin",
-    "createRecipe": "Create Recipe",
-    "Difficulty": "Difficulty",
-    "noDifficulty": "No Difficulty specified",
-    "uploadImage": "Upload Image",
-    "imageLimit": "Can upload up to {{count}} images",
-    "alerts": {
-      "imageLimit": {
-        "upload": "Maximum 5 images allowed"
-      }
+  "title": "Recipe Name",
+  "cooking_time": "Cooking Time",
+  "description": "Description",
+  "category": "Category",
+  "condition": "condition",
+  "createdAt": "Created At",
+  "origin": "Origin",
+  "createRecipe": "Create Recipe",
+  "Difficulty": "Difficulty",
+  "noDifficulty": "No Difficulty specified",
+  "uploadImage": "Upload Image",
+  "imageLimit": "Can upload up to {{count}} images",
+  "alerts": {
+    "imageLimit": {
+      "upload": "Maximum 5 images allowed"
     }
   },
+  "rating": "Rating",
+  "averageRating": "Average Rating",
+  "votes": "votes",
+  "yourRating": "Your Rating",
+  "rateThis": "Rate this recipe"
+},
+"rating": {
+  "loginRequired": "Please log in to rate",
+  "success": {
+    "title": "Success",
+    "message": "Your rating has been saved"
+  },
+  "error": "Error saving rating"
+},
+
   "profile": {
     "myProfile": "My Profile",
     "editProfile": "Edit Profile",

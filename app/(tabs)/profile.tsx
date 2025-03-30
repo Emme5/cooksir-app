@@ -13,6 +13,7 @@ import CustomAlert from '@/components/CustomAlert';
 import { Text } from "@/components/CustomText"
 import { useRouter } from 'expo-router'
 
+
 export default function Profile() {
   // 1. State Management
   const { session } = useAuth()
@@ -406,20 +407,20 @@ export default function Profile() {
 
           {/* Buttons */}
           <View className="flex-row justify-around mb-6">
-          <Pressable 
-            className={`items-center p-4 rounded-lg w-5/12 border ${
-              theme === 'dark' ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'
-            }`}
-            android_ripple={{ color: 'rgba(104, 104, 104, 0.3)' }}
-            onPress={() => router.push('/bookmarks')}
-          >
-            <FontAwesome 
-              name="heart" 
-              size={24} 
-              color={theme === 'dark' ? '#fff' : '#4A4A4A'}
-            />
-            <Text className="mt-2 text-center">{t('profile.buttons.saved')}</Text>
-          </Pressable>
+            <Pressable 
+              className={`items-center p-4 rounded-lg w-5/12 border ${
+                theme === 'dark' ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'
+              }`}
+              android_ripple={{ color: 'rgba(104, 104, 104, 0.3)' }}
+              onPress={() => console.log('Pressed: Saved')}
+            >
+              <FontAwesome 
+                name="heart" 
+                size={24} 
+                color={theme === 'dark' ? '#fff' : '#4A4A4A'}
+              />
+              <Text className="mt-2 text-center">{t('profile.buttons.saved')}</Text>
+            </Pressable>
             
             <Pressable 
               className={`items-center p-4 rounded-lg w-5/12 border ${

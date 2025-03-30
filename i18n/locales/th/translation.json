@@ -50,25 +50,39 @@
       "phonePlaceholder": "กรอกเบอร์โทรศัพท์"
     }
   },
-  "recipe": {
-    "title": "ชื่อสูตรอาหาร",
-    "cooking_time": "เวลาทำอาหาร",
-    "description": "รายละเอียดสูตร",
-    "category": "หมวดหมู่",
-    "condition": "ระดับความยาก",
-    "createdAt": "สร้างเมื่อ",
-    "origin": "ที่มา",
-    "createRecipe": "สร้างสูตรอาหาร",
-    "Difficulty": "ระดับความยาก",
-    "noDifficulty": "ไม่ระบุระดับความยาก",
-    "uploadImage": "อัพโหลดรูปภาพ",
-    "imageLimit": "สามารถอัพโหลดได้สูงสุด {{count}} รูป",
-    "alerts": {
-      "imageLimit": {
-        "upload": "สามารถอัพโหลดรูปภาพได้สูงสุด 5 รูป"
-      }
+"recipe": {
+  "title": "ชื่อสูตรอาหาร",
+  "cooking_time": "เวลาทำอาหาร",
+  "description": "รายละเอียดสูตร",
+  "category": "หมวดหมู่",
+  "condition": "ระดับความยาก",
+  "createdAt": "สร้างเมื่อ",
+  "origin": "ที่มา",
+  "createRecipe": "สร้างสูตรอาหาร",
+  "Difficulty": "ระดับความยาก",
+  "noDifficulty": "ไม่ระบุระดับความยาก",
+  "uploadImage": "อัพโหลดรูปภาพ",
+  "imageLimit": "สามารถอัพโหลดได้สูงสุด {{count}} รูป",
+  "alerts": {
+    "imageLimit": {
+      "upload": "สามารถอัพโหลดรูปภาพได้สูงสุด 5 รูป"
     }
   },
+  "rating": "คะแนน",
+  "averageRating": "คะแนนเฉลี่ย",
+  "votes": "คะแนน",
+  "yourRating": "คะแนนของคุณ",
+  "rateThis": "ให้คะแนนสูตรนี้"
+},
+"rating": {
+  "loginRequired": "กรุณาเข้าสู่ระบบเพื่อให้คะแนน",
+  "success": {
+    "title": "สำเร็จ",
+    "message": "บันทึกคะแนนเรียบร้อยแล้ว"
+  },
+  "error": "เกิดข้อผิดพลาดในการบันทึกคะแนน"
+},
+
   "profile": {
     "myProfile": "โปรไฟล์ของฉัน",
     "editProfile": "แก้ไขโปรไฟล์",

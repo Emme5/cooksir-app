@@ -481,7 +481,7 @@ export default function EditRecipes() {
     } catch (error) {
       console.error('Error updating recipes:', error);
   
-      // รอสักค�ู่ก่อนแสดง error alert
+      // รอสักครู่ก่อนแสดง error alert
       await new Promise(resolve => setTimeout(resolve, 500));
   
       setAlertConfig({

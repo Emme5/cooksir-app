@@ -153,15 +153,29 @@ export default function Home() {
           *,
           recipe_images (
             image_url
-          )
+          ),
+          ratings (rating)
         `, { count: 'exact' })
         .ilike('title', `%${searchText}%`)
         .range(0, ITEMS_PER_PAGE - 1)
         .order('created_at', { ascending: false })
-
+  
       if (error) throw error
-
-      setFilteredRecipes(data || [])
+  
+      // คำนวณคะแนนเฉลี่ย
+      const searchResultsWithRatings = data?.map(recipe => {
+        const ratings = recipe.ratings || [];
+        const averageRating = ratings.length 
+          ? ratings.reduce((sum, r) => sum + r.rating, 0) / ratings.length
+          : 0;
+        
+        return {
+          ...recipe,
+          averageRating
+        };
+      }) || [];
+  
+      setFilteredRecipes(searchResultsWithRatings)
       setHasMore(count ? count > ITEMS_PER_PAGE : false)
       setPage(0)
       
@@ -200,13 +214,28 @@ export default function Home() {
           *,
           recipe_images (
             image_url
-          )
+          ),
+          ratings (rating)
         `)
         .eq('hilight', true)
         .order('created_at', { ascending: false })
-
+  
       if (error) throw error
-      setHilightRecipes(data || []) // กำหนดค่าเริ่มต้นสำหรับสูตรอาหารแนะนำ
+      
+      // คำนวณคะแนนเฉลี่ย
+      const highlightWithRatings = data?.map(recipe => {
+        const ratings = recipe.ratings || [];
+        const averageRating = ratings.length 
+          ? ratings.reduce((sum, r) => sum + r.rating, 0) / ratings.length
+          : 0;
+        
+        return {
+          ...recipe,
+          averageRating
+        };
+      }) || [];
+      
+      setHilightRecipes(highlightWithRatings) // กำหนดค่าเริ่มต้นสำหรับสูตรอาหารแนะนำ
     } catch (error) {
       console.error("Error fetching hilight Recipes:", error)
     }
@@ -225,9 +254,9 @@ export default function Home() {
       const { count } = await supabase
         .from('recipes')
         .select('*', { count: 'exact', head: true })
-
+  
       console.log('📊 จำนวนสูตรอาหารทั้งหมด:', count)
-
+  
       // ตรวจสอบว่า count เป็น 0 หรือไม่
       if (count === 0) {
         console.log('⚠️ ไม่มีข้อมูลในตาราง recipes')
@@ -235,40 +264,57 @@ export default function Home() {
         setRecipes([]) // ตั้งค่าให้เป็น array ว่าง
         return
       }
-
+  
       if (count && from >= count) {
         console.log('⚠️ ไม่มีข้อมูลเพิ่มเติม')
         setHasMore(false)
         return
       }
-
+  
       const to = from + ITEMS_PER_PAGE - 1
-
+  
       const { data, error } = await supabase
         .from('recipes')
         .select(`
           *,
           recipe_images (
             image_url
-          )
+          ),
+          ratings (rating)
         `)
         .range(from, to)
         .order('created_at', { ascending: false })
-
+  
       if (error) throw error
-
+  
       setHasMore(count ? from + ITEMS_PER_PAGE < count : false)
-
+  
+      // คำนวณคะแนนเฉลี่ย
+      const recipesWithRatings = data?.map(recipe => {
+        const ratings = recipe.ratings || [];
+        let averageRating = 0;
+        
+        if (ratings.length > 0) {
+          const sum = ratings.reduce((total, r) => total + r.rating, 0);
+          averageRating = sum / ratings.length;
+        }
+        
+        return {
+          ...recipe,
+          averageRating
+        };
+      }) || [];
+  
       if (pageNumber === 0) {
-        setRecipes(data || []) // กำหนดค่าเริ่มต้นสำหรับสูตรอาหาร
+        setRecipes(recipesWithRatings) // กำหนดค่าเริ่มต้นสำหรับสูตรอาหาร
       } else {
-        setRecipes(prev => [...prev, ...(data || [])])
+        setRecipes(prev => [...prev, ...recipesWithRatings])
       }
     } catch (error) {
       console.error("❌ เกิดข้อผิดพลาดในการดึงข้อมูล:", error)
       setHasMore(false)
     } finally {
-        setIsLoadingMore(false) // ย้ายมาไว้ที่ finally
+      setIsLoadingMore(false) // ย้ายมาไว้ที่ finally
     }
   }
 
@@ -429,6 +475,7 @@ export default function Home() {
                       <HorizontalCard
                         image={item.recipe_images?.[0]?.image_url || 'https://png.pngtree.com/png-vector/20230215/ourmid/pngtree-cooking-logo-png-image_6601988.png'}
                         title={item.title}
+                        averageRating={item.averageRating} // เพิ่มการส่งค่า averageRating
                         onPress={() => handleHorizontalCardPress(item)}
                       />
                     )}
@@ -457,13 +504,14 @@ export default function Home() {
           keyExtractor={(item) => `recipe_${item.id}`}
           renderItem={({ item }) => (
             <RecipeCard
-              title={item.title}
-              cooking_time={`เวลาทำโดยประมาณ : ${item.cooking_time} นาที`}
-              image={item.recipe_images?.[0]?.image_url || 'https://png.pngtree.com/png-vector/20230215/ourmid/pngtree-cooking-logo-png-image_6601988.png'}
-              postDate={formatDate(item.created_at)}
-              description={getLocalizedConditionName(item.difficulty)} // แสดงระดับความยาก
-              onPress={() => handleRecipeCardPress(item)}
-            />
+            title={item.title}
+            cooking_time={`เวลาทำโดยประมาณ : ${item.cooking_time} นาที`}
+            image={item.recipe_images?.[0]?.image_url || 'https://png.pngtree.com/png-vector/20230215/ourmid/pngtree-cooking-logo-png-image_6601988.png'}
+            postDate={formatDate(item.created_at)}
+            description={getLocalizedConditionName(item.difficulty)}
+            averageRating={item.averageRating} // เพิ่มการส่งค่า averageRating
+            onPress={() => handleRecipeCardPress(item)}
+          />
           )}
           ListEmptyComponent={() => (
             <View className="p-4">
