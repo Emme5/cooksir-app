@@ -14,13 +14,18 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.mongkol251.cooksirapp",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/cook_logo2.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.mongkol251.cooksirapp"
     },
     "web": {
       "favicon": "./assets/images/favicon.png"
@@ -33,7 +38,7 @@
         "origin": false
       },
       "eas": {
-        "projectId": "51896d8f-202c-416f-ad02-a391a410018b"
+        "projectId": "635cd217-b883-4c55-835e-ed69499c3b97"
       }
     }
   }
