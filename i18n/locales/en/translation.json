@@ -1,0 +1,303 @@
+{
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "clear": "Reset",
+    "ok": "OK"
+  },
+  "auth": {
+    "login": {
+      "title": "Login",
+      "emailPlaceholder": "Email",
+      "passwordPlaceholder": "Password",
+      "button": "Login",
+      "noAccount": "Don't have an account?",
+      "registerButton": "Register",
+      "validation": {
+        "incomplete": "Incomplete Data",
+        "invalidData": "Please enter valid data"
+      },
+      "alerts": {
+        "error": "Login Failed",
+        "success": "Login Successful",
+        "successMessage": "Press OK to continue",
+        "ok": "OK"
+      }
+    },
+    "register": {
+      "title": "Register",
+      "displayNamePlaceholder": "Display Name",
+      "emailPlaceholder": "Email",
+      "passwordPlaceholder": "Password",
+      "button": "Register",
+      "hasAccount": "Already have an account?",
+      "loginButton": "Login",
+      "validation": {
+        "incomplete": "Incomplete Data",
+        "invalidData": "Please enter valid data"
+      },
+      "alerts": {
+        "success": "Registration Successful",
+        "successMessage": "Press OK to login",
+        "ok": "OK"
+      },
+      "displayNameTitle": "Full Name",
+      "phoneTitle": "Phone Number",
+      "phonePlaceholder": "Enter your phone number"
+    }
+  },
+  "recipe": {
+    "title": "Recipe Name",
+    "cooking_time": "Cooking Time",
+    "description": "Description",
+    "category": "Category",
+    "condition": "condition",
+    "createdAt": "Created At",
+    "origin": "Origin",
+    "createRecipe": "Create Recipe",
+    "Difficulty": "Difficulty",
+    "noDifficulty": "No Difficulty specified",
+    "uploadImage": "Upload Image",
+    "imageLimit": "Can upload up to {{count}} images",
+    "alerts": {
+      "imageLimit": {
+        "upload": "Maximum 5 images allowed"
+      }
+    }
+  },
+  "profile": {
+    "myProfile": "My Profile",
+    "editProfile": "Edit Profile",
+    "myRecipes": "My Recipes",
+    "settings": "Settings",
+    "noName": "No Name",
+    "section" : "origin",
+    "buttons": {
+      "saved": "Saved Items",
+      "messages": "Messages",
+      "reviews": "Reviews",
+      "recent": "Recently Viewed"
+    },
+    "editName": {
+      "save": "Save",
+      "cancel": "Cancel",
+      "success": "Name updated successfully",
+      "error": "Could not update name"
+    },
+    "avatar": {
+      "pickTitle": "Change Profile Picture",
+      "pickMessage": "Choose how to add a photo",
+      "camera": "Take Photo",
+      "gallery": "From Gallery",
+      "error": "Failed to update profile picture"
+    },
+    "sections": {
+      "selling": {
+        "title": "Selling",
+        "recipes": "Your Recipes",
+        "quickActions": "Quick Actions",
+        "followers": "Marketplace Followers",
+        "activities": "All Selling Activities"
+      },
+      "settings": {
+        "title": "Settings",
+        "following": "Following"
+      },
+      "account": {
+        "title": "Account",
+        "origin": "origin",
+        "security": "Security"
+      }
+    }
+  },
+  "settings": {
+    "management": "Settings Management",
+    "language": "Language",
+    "notifications": "Notifications",
+    "origin": "origin",
+    "additional": "Additional Actions",
+    "simpleCreate": "Use Simple Recipe Creation",
+    "followers": "Allow People to Follow You",
+    "customMessage": "Custom Message Settings",
+    "privacy": {
+      "title": "Privacy",
+      "settings": "Privacy Settings",
+      "security": "Security"
+    },
+    "logout": {
+      "logout": "Logout",
+      "confirmTitle": "Confirm Logout",
+      "confirmMessage": "Are you sure you want to logout?",
+      "error": "Failed to logout. Please try again."
+    },
+    "appearance": {
+      "title": "Theme",
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System"
+    }
+  },
+  "create": {
+    "title": "Create Recipe",
+    "fields": {
+      "title": "Recipe Name",
+      "cooking_time": "Cooking Time (minutes)",
+      "description": "Description",
+      "origin": "Origin",
+      "category": "Category",
+      "condition": "condition"
+    },
+    "placeholders": {
+      "title": "Recipe Name",
+      "cooking_time": "Cooking Time",
+      "description": "Write recipe steps and ingredients here",
+      "origin": "Recipe Origin",
+      "category": "Category",
+      "condition": "condition"
+    },
+    "validation": {
+      "title": "Please enter Recipe name",
+      "cooking_time": {
+        "required": "Please enter Recipe cooking_time",
+        "invalid": "Please enter valid cooking_time"
+      },
+      "description": "Please enter Recipe description",
+      "category": "Please select Recipe category",
+      "condition": "Please select Recipe condition",
+      "origin": "Please enter origin",
+      "image": "Please select at least 1 Recipe image",
+      "imageLimit": {
+        "upload": "Can upload up to 5 images",
+        "select": "Can select up to {{count}} more images"
+      }
+    },
+    "buttons": {
+      "save": "Save",
+      "saving": "Saving..."
+    },
+    "messages": {
+      "loginRequired": "Please login to create Recipe",
+      "success": "Recipe saved successfully",
+      "error": "Error creating Recipe"
+    },
+    "alerts": {
+      "error": {
+        "required": "Please fill in all required fields",
+        "update": "Failed to update Recipe",
+        "image": "Failed to pick image",
+        "imageDelete": "Failed to delete image"
+      },
+      "success": {
+        "imageDelete": "Image deleted successfully"
+      }
+    },
+
+    "create": {
+    "modal": {
+      "condition": {
+        "title": "Select condition",
+        "options": {
+          "new": "Easy",
+          "likeNew": "Moderate",
+          "good": "Difficult",
+          "fair": "Expert"
+        }
+      }
+    }
+  },
+
+    "imagePicker": {
+      "title": "Add Image",
+      "message": "Choose how to add an image",
+      "camera": "Take Photo",
+      "library": "Choose from Library",
+      "error": "Error picking image",
+      "limitReached": "Maximum {{count}} images allowed"
+    }
+  },
+  "bookmark": {
+    "title": "Your Recipes",
+    "empty": "No recipes found",
+    "recipe": {
+      "status": {
+        "available": "Ready to Cook"
+      }
+    },
+    "actions": {
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "deleteAlert": {
+      "title": "Delete Recipe",
+      "message": "Are you sure you want to delete this Recipe?",
+      "error": "Failed to delete Recipe"
+    }
+  },
+  "home": {
+    "welcome": {
+      "title": "Welcome to Cooksir",
+      "guest": "Food Lover"
+    },
+    "search": {
+      "placeholder": "Search recipes..."
+    },
+    "sections": {
+      "recommended": "Recommended Recipes"
+    },
+    "empty": {
+      "noRecipes": "No Recipes found",
+      "noSearchResults": "No Recipes match your search"
+    }
+  },
+  "tabs": {
+    "home": "Home",
+    "bookmark": "My Recipes",
+    "create": "Create",
+    "profile": "Profile",
+    "settings": "Settings"
+  },
+  "landing": {
+    "slogan": {
+      "line1": "Creative ideas for your favorite meals",
+      "line2": "Experience cooking with"
+    },
+    "description": "Discover new recipes every day: Start your cooking journey with endless ideas with creative recipes from Cooksir.",
+    "button": "Get Started"
+  },
+  "editRecipe": {
+    "title": "Edit Recipe",
+    "titlePlaceholder": "Recipe Name",
+    "cooking_timeLabel": "cooking_time",
+    "cooking_timePlaceholder": "Enter cooking_time",
+    "descriptionLabel": "Description",
+    "descriptionPlaceholder": "Enter Recipe description",
+    "originLabel": "origin",
+    "originPlaceholder": "Enter origin",
+    "categoryLabel": "Category",
+    "selectCategory": "Select Category",
+    "conditionLabel": "Condition",
+    "selectCondition": "Select Condition",
+    "existingImages": "Current Images",
+    "newImages": "New Images",
+    "addImages": "Add Images",
+    "updateButton": "Update Recipe",
+    "alerts": {
+      "success": "Success",
+      "successMessage": "Recipe updated successfully",
+      "error": "Error",
+      "errorMessage": "Failed to update Recipe",
+      "confirmDelete": "Are you sure you want to delete this image?",
+      "imageDelete": {
+        "success": "Image deleted successfully",
+        "error": "Failed to delete image"
+      },
+      "validation": {
+        "required": "Please fill in all required fields"
+      }
+    }
+  }
+} 

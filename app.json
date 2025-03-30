@@ -4,11 +4,12 @@
     "slug": "cooksir-app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/images/cook_logo.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
+    "scheme": "cooksir-app",
     "splash": {
-      "image": "./assets/splash-icon.png",
+      "image": "./assets/images/cook_logo.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -17,12 +18,15 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/images/cook_logo2.png",
         "backgroundColor": "#ffffff"
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
-    }
+      "favicon": "./assets/images/favicon.png"
+    },
+    "plugins": [
+      "expo-router"
+    ]
   }
 }

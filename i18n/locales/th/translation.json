@@ -1,0 +1,289 @@
+{
+  "common": {
+    "save": "บันทึก",
+    "cancel": "ยกเลิก",
+    "confirm": "ยืนยัน",
+    "loading": "กำลังโหลด...",
+    "error": "เกิดข้อผิดพลาด",
+    "success": "สำเร็จ",
+    "clear": "ล้างค่า",
+    "ok": "ตกลง"
+  },
+  "auth": {
+    "login": {
+      "title": "เข้าสู่ระบบ",
+      "emailPlaceholder": "อีเมล์",
+      "passwordPlaceholder": "รหัสผ่าน",
+      "button": "เข้าสู่ระบบ",
+      "noAccount": "ยังไม่มีบัญชี ?",
+      "registerButton": "สมัครสมาชิก",
+      "validation": {
+        "incomplete": "ข้อมูลไม่ครบ",
+        "invalidData": "กรุณาระบุข้อมูลให้ถูกต้อง"
+      },
+      "alerts": {
+        "error": "เข้าสู่ระบบไม่สำเร็จ",
+        "success": "เข้าสู่ระบบสำเร็จ",
+        "successMessage": "กรุณากดปุ่ม OK เพื่อเข้าสู่ระบบ",
+        "ok": "ตกลง"
+      }
+    },
+    "register": {
+      "title": "สมัครสมาชิก",
+      "displayNamePlaceholder": "ชื่อสมาชิก",
+      "emailPlaceholder": "อีเมล์",
+      "passwordPlaceholder": "รหัสผ่าน",
+      "button": "สมัครสมาชิก",
+      "hasAccount": "มีบัญชีอยู่แล้ว ?",
+      "loginButton": "เข้าสู่ระบบ",
+      "validation": {
+        "incomplete": "ข้อมูลไม่ครบ",
+        "invalidData": "กรุณาระบุข้อมูลให้ถูกต้อง"
+      },
+      "alerts": {
+        "success": "ลงทะเบียนสำเร็จ",
+        "successMessage": "กรุณากดปุ่ม OK เพื่อเข้าสู่ระบบ",
+        "ok": "ตกลง"
+      },
+      "displayNameTitle": "ชื่อ-นามสกุล",
+      "phoneTitle": "เบอร์โทรศัพท์",
+      "phonePlaceholder": "กรอกเบอร์โทรศัพท์"
+    }
+  },
+  "recipe": {
+    "title": "ชื่อสูตรอาหาร",
+    "cooking_time": "เวลาทำอาหาร",
+    "description": "รายละเอียดสูตร",
+    "category": "หมวดหมู่",
+    "condition": "ระดับความยาก",
+    "createdAt": "สร้างเมื่อ",
+    "origin": "ที่มา",
+    "createRecipe": "สร้างสูตรอาหาร",
+    "Difficulty": "ระดับความยาก",
+    "noDifficulty": "ไม่ระบุระดับความยาก",
+    "uploadImage": "อัพโหลดรูปภาพ",
+    "imageLimit": "สามารถอัพโหลดได้สูงสุด {{count}} รูป",
+    "alerts": {
+      "imageLimit": {
+        "upload": "สามารถอัพโหลดรูปภาพได้สูงสุด 5 รูป"
+      }
+    }
+  },
+  "profile": {
+    "myProfile": "โปรไฟล์ของฉัน",
+    "editProfile": "แก้ไขโปรไฟล์",
+    "myRecipes": "สูตรอาหารของฉัน",
+    "settings": "ตั้งค่า",
+    "noName": "ไม่ระบุชื่อ",
+    "section" : "ที่มา",
+    "buttons": {
+      "saved": "รายการที่บันทึกไว้",
+      "messages": "กล่องข้อความ",
+      "reviews": "รีวิว",
+      "recent": "ดูล่าสุด"
+    },
+    "editName": {
+      "save": "บันทึก",
+      "cancel": "ยกเลิก",
+      "success": "อัพเดทชื่อเรียบร้อยแล้ว",
+      "error": "ไม่สามารถอัพเดทชื่อได้"
+    },
+    "avatar": {
+      "pickTitle": "เปลี่ยนรูปโปรไฟล์",
+      "pickMessage": "เลือกวิธีการเพิ่มรูปภาพ",
+      "camera": "ถ่ายภาพ",
+      "gallery": "จากคลังภาพ",
+      "error": "ไม่สามารถอัพเดทรูปโปรไฟล์ได้"
+    },
+    "sections": {
+      "selling": {
+        "title": "การขาย",
+        "recipes": "รายการสูตรอาหารของคุณ",
+        "quickActions": "การดำเนินการด่วน",
+        "followers": "ผู้ติดตามบน Marketplace",
+        "activities": "กิจกรรมการขายทั้งหมด"
+      },
+      "settings": {
+        "title": "การตั้งค่า",
+        "following": "กำลังติดตาม"
+      },
+      "account": {
+        "title": "บัญชี",
+        "origin": "ตำแหน่ง",
+        "security": "ความปลอดภัย"
+      }
+    }
+  },
+  "settings": {
+    "management": "จัดการการตั้งค่า",
+    "language": "ภาษา",
+    "notifications": "การแจ้งเตือน",
+    "origin": "ตำแหน่ง",
+    "additional": "การดำเนินการเพิ่มเติม",
+    "simpleCreate": "ใช้การสร้างรายการสูตรอาหารที่เรียบง่าย",
+    "followers": "ให้ผู้คนผู้ติดตามคุณ",
+    "customMessage": "ตั้งค่าข้อความที่กำหนดเอง",
+    "privacy": {
+      "title": "ความเป็นส่วนตัว",
+      "settings": "ตั้งค่าความเป็นส่วนตัว",
+      "security": "ความปลอดภัย"
+    },
+    "logout": {
+      "logout": "ออกจากระบบ",
+      "confirmTitle": "ยืนยันการออกจากระบบ",
+      "confirmMessage": "คุณต้องการออกจากระบบใช่หรือไม่?",
+      "error": "ไม่สามารถออกจากระบบได้ กรุณาลองใหม่อีกครัง"
+    },
+    "appearance": {
+      "title": "ธีม",
+      "light": "สว่าง",
+      "dark": "มืด",
+      "system": "ระบบ"
+    }
+  },
+  "create": {
+    "title": "สร้างสูตรอาหาร",
+    "fields": {
+      "title": "ชื่อสูตรอาหาร",
+      "cooking_time": "เวลาในการทำ (นาที)",
+      "description": "รายละเอียดสูตร",
+      "origin": "ที่มา",
+      "category": "เลือกหมวดหมู่อาหาร",
+      "condition": "เลือกระดับความยาก"
+    },
+    "placeholders": {
+      "title": "ใส่ชื่อสูตรอาหาร",
+      "cooking_time": "ระบุเวลาทำอาหาร",
+      "description": "เขียนขั้นตอนและส่วนผสมที่นี่",
+      "origin": "ที่มาของสูตรอาหาร",
+      "category": "เลือกหมวดหมู่",
+      "condition": "เลือกระดับความยาก"
+    },
+    "validation": {
+      "title": "กรุณากรอกชื่อสูตรอาหาร",
+      "cooking_time": {
+        "required": "กรุณากรอกราคาสูตรอาหาร",
+        "invalid": "กรุณากรอกราคาสูตรอาหารให้ถูกต้อง"
+      },
+      "description": "กรุณากรอกรายละเอียดสูตรอาหาร",
+      "category": "กรุณาเลือกหมวดหมู่สูตรอาหาร",
+      "condition": "กรุณาเลือกสภาพสูตรอาหาร",
+      "origin": "กรุณากรอสถานที่",
+      "image": "กรุณาเลือกรูปภาพสูตรอาหารอย่างน้อย 1 รูป",
+      "imageLimit": {
+        "upload": "สามารถอัพโหลดรูปภาพได้สูงสุด 5 รูป",
+        "select": "สามารถเลือกได้สูงสุด {{count}} รูป"
+      }
+    },
+    "buttons": {
+      "save": "บันทึก",
+      "saving": "กำลังบันทึก..."
+    },
+    "messages": {
+      "loginRequired": "กรุณาเข้าสู่ระบบก่อนสร้างสูตรอาหาร",
+      "success": "บันทึกสูตรอาหารเรียบร้อยแล้ว",
+      "error": "เกิดข้อผิดพลาดในการสร้างสูตรอาหาร"
+    },
+    "alerts": {
+      "error": {
+        "required": "กรุณากรอกข้อมูลให้ครบถ้วน",
+        "update": "ไมสามารถอัพเดทสูตรอาหารได้",
+        "image": "ไม่สามารถเลือกรูปภาพได้",
+        "imageDelete": "ไม่สามารถลบรูปภาพได้"
+      },
+      "success": {
+        "imageDelete": "ลบรูปภาพสำเร็จ"
+      }
+    },
+
+    "imagePicker": {
+      "title": "เพิ่มรูปภาพ",
+      "message": "เลือกวิธีการเพิ่มรูปภาพ",
+      "camera": "ถ่ายภาพ",
+      "library": "เลือกจากคลังภาพ",
+      "error": "ไม่สามารถเลือกรูปภาพได้",
+      "limitReached": "สามารถเพิ่มรูปภาพได้สูงสุด {{count}} รูป"
+    }
+  },
+  "bookmark": {
+    "title": "รายการสูตรอาหารของคุณ",
+    "empty": "ไม่พบสูตรอาหาร",
+    "recipe": {
+      "status": {
+        "available": "พร้อมทำ"
+      }
+    },
+    "actions": {
+      "edit": "แก้ไข",
+      "delete": "ลบ"
+    },
+    "deleteAlert": {
+      "title": "ลบสูตรอาหาร",
+      "message": "คุณแน่ใจหรือไม่ที่จะลบสูตรอาหารนี้?",
+      "error": "ไม่สามารถลบสูตรอาหารได้"
+    }
+  },
+  "home": {
+    "welcome": {
+      "title": "ยินดีต้อนรับสู่ Cooksir",
+      "guest": "คนรักอาหารที่รักการทำอาหาร"
+    },
+    "search": {
+      "placeholder": "ค้นหาสูตรอาหาร..."
+    },
+    "sections": {
+      "recommended": "สูตรอาหารแนะนำ"
+    },
+    "empty": {
+      "noRecipes": "ไม่พบสูตรอาหาร",
+      "noSearchResults": "ไม่พบสูตรอาหารที่ค้นหา"
+    }
+  },
+  "tabs": {
+    "home": "หน้าหลัก",
+    "bookmark": "สูตรของฉัน",
+    "create": "สร้างสูตร",
+    "profile": "โปรไฟล์",
+    "settings": "ตั้งค่า"
+  },
+  "landing": {
+    "slogan": {
+      "line1": "ไอเดียสร้างสรรค์ให้มื้อโปรดของคุณ",
+      "line2": "ประสบการณ์การทำอาหารไปกับ"
+    },
+    "description": "ค้นหาสันสร้างสูตรใหม่ได้ทุกวัน: เริ่มต้นเส้นทางการทำอาหารด้วยไอเดียไม่สิ้นสุด ด้วยสูตรสร้างสรรค์จาก Cooksir",
+    "button": "เริ่มใช้งาน"
+  },
+  "editRecipe": {
+    "title": "แก้ไขสูตรอาหาร",
+    "titlePlaceholder": "ชื่อสูตรอาหาร",
+    "cooking_timeLabel": "ราคา",
+    "cooking_timePlaceholder": "ระบุราคา",
+    "descriptionLabel": "รายละเอียด",
+    "descriptionPlaceholder": "ระบุรายละเอียดสูตรอาหาร",
+    "originLabel": "สถานที่",
+    "originPlaceholder": "ระบุสถานที่",
+    "categoryLabel": "หมวดหมู่",
+    "selectCategory": "เลือกหมวดหมู่",
+    "conditionLabel": "ความยากสูตรอาหาร",
+    "selectCondition": "เลือกความยากสูตรอาหาร",
+    "existingImages": "รูปภาพปัจจุบัน",
+    "newImages": "รูปภาพใหม่",
+    "addImages": "เพิ่มรูปภาพ",
+    "updateButton": "อัพเดทสูตรอาหาร",
+    "alerts": {
+      "success": "สำเร็จ",
+      "successMessage": "อัพเดทสูตรอาหารเรียบร้อยแล้ว",
+      "error": "ผิดพลาด",
+      "errorMessage": "ไม่สามารถอัพเดทสูตรอาหารได้",
+      "confirmDelete": "คุณแน่ใจหรือไม่ที่จะลบรูปภาพนี้?",
+      "imageDelete": {
+        "success": "ลบรูปภาพเรียบร้อยแล้ว",
+        "error": "ไม่สามารถลบรูปภาพได้"
+      },
+      "validation": {
+        "required": "กรุณากรอกข้อมูลให้ครบถ้วน"
+      }
+    }
+  }
+} 
